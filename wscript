@@ -29,6 +29,8 @@ def configure(cfg):
 	cfg.load('msvc')
 	cfg.env.append_value('LDFLAGS', ['/DEBUG', '/INCREMENTAL:NO', '/WX'])
 
+	cfg.check_lib_msvc(libname='opengl32', uselib_store='opengl')
+
 	def environ(key):
 		return os.environ.get(key).split(';')
 
@@ -62,7 +64,7 @@ def build(bld):
 		features='cprogram',
 		source=['src/dummy.c'],
 		use=['asmObjs'],
-		uselib=['CRT_MULTITHREADED_DLL_DBG', 'GLFW3'],
+		uselib=['CRT_MULTITHREADED_DLL_DBG', 'GLFW3', 'opengl'],
 		target='AsmSnake')
 #enddef
 
