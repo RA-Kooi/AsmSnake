@@ -54,6 +54,7 @@ def build(bld):
 
 	bld.objects(
 		name='asmObjs',
+		includes=['include'],
 		source=['src/main.s'])
 
 	bld.program(
