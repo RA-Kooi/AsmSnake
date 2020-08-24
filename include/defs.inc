@@ -5,6 +5,10 @@
 
 DEFAULT REL
 
+section .rodata data align=8
+screen_x: equ 640
+screen_y: equ 480
+
 ; x64 argument registers
 %define arg1 rcx
 %define arg2 rdx
@@ -25,8 +29,7 @@ DEFAULT REL
 
 extern puts:proc
 
-section .rodata data align=8
-f0: dd 0.0
+section .rodata
 f1: dd 1.0
 
 %endif ; DEFS_INC
