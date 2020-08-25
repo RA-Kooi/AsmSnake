@@ -1,1 +1,3 @@
 * text=lf
+**/*.s linguist-language=Assembly
+**/*.inc linguist-language=Assembly
