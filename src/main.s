@@ -3,6 +3,7 @@
 %include "defs.inc"
 %include "glfw.inc"
 %include "opengl.inc"
+%include "init_gl.inc"
 
 section .rodata
 init_error: db "Error initializing GLFW",0
@@ -66,6 +67,8 @@ main:
 
 	mov arg1, rax
 	call [glfwMakeContextCurrent]
+
+	call init_gl
 
 	pxor arg1f, arg1f
 	pxor arg2f, arg2f

@@ -32,4 +32,6 @@ extern puts:proc
 section .rodata
 f1: dd 1.0
 
+section .bss align=4
+
 %endif ; DEFS_INC
