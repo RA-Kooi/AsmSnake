@@ -25,9 +25,16 @@ screen_y: equ 480
 
 %ifidn __OUTPUT_FORMAT__, win64
 %define puts __imp_puts
+%define fprintf __imp_fprintf
+
+extern __imp___acrt_iob_func:proc
+
+section .drectve info
+db "/defaultlib:legacy_stdio_definitions.lib"
 %endif
 
 extern puts:proc
+extern fprintf:proc
 
 section .rodata
 f1: dd 1.0
