@@ -6,6 +6,7 @@
 %ifidn __OUTPUT_FORMAT__, win64
 %define glClearColor __imp_glClearColor
 %define glClear __imp_glClear
+%define glEnable __imp_glEnable
 %define glGetProcAddress __imp_wglGetProcAddress
 %else
 %define glGetProcAddress glXGetProcAddress
@@ -13,10 +14,33 @@
 
 extern glClearColor:proc
 extern glClear:proc
+extern glEnable:proc
 extern glGetProcAddress:proc
 
 section .rodata
 GL_COLOR_BUFFER_BIT:               equ 0x00004000
+
+GL_DEBUG_OUTPUT:                   equ 0x900002E0
+GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB:   equ 0x00008242
+
+GL_DEBUG_SOURCE_API:               equ 0x00008246
+GL_DEBUG_SOURCE_WINDOW_SYSTEM:     equ 0x00008247
+GL_DEBUG_SOURCE_SHADER_COMPILER:   equ 0x00008248
+GL_DEBUG_SOURCE_THIRD_PARTY:       equ 0x00008249
+GL_DEBUG_SOURCE_APPLICATION:       equ 0x0000824A
+GL_DEBUG_SOURCE_OTHER:             equ 0x0000824B
+
+GL_DEBUG_TYPE_ERROR:               equ 0x0000824C
+GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: equ 0x0000824D
+GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:  equ 0x0000824E
+GL_DEBUG_TYPE_PORTABILITY:         equ 0x0000824F
+GL_DEBUG_TYPE_PERFORMANCE:         equ 0x00008250
+GL_DEBUG_TYPE_OTHER:               equ 0x00008251
+
+GL_DEBUG_SEVERITY_HIGH:            equ 0x00009146
+GL_DEBUG_SEVERITY_MEDIUM:          equ 0x00009147
+GL_DEBUG_SEVERITY_LOW:             equ 0x00009148
+GL_DEBUG_SEVERITY_NOTIFICATION:    equ 0x0000826B
 
 section .bss
 struc gl_pointers_t

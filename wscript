@@ -57,7 +57,7 @@ def build(bld):
 	bld.objects(
 		name='asmObjs',
 		includes=['include'],
-		source=['src/main.s', 'src/init_gl.s'])
+		source=['src/main.s', 'src/init_gl.s', 'src/debug_context.s'])
 
 	bld.program(
 		name='AsmSnake',
