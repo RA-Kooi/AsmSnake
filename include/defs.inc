@@ -26,6 +26,17 @@ screen_y: equ 480
 %ifidn __OUTPUT_FORMAT__, win64
 %define puts __imp_puts
 %define fprintf __imp_fprintf
+%define strerror __imp_strerror
+%define errno __imp__errno
+
+%define fopen __imp_fopen
+%define fclose __imp_fclose
+%define fread __imp_fread
+%define fseek __imp_fseek
+%define ftell __imp_ftell
+
+%define malloc __imp_malloc
+%define free __imp_free
 
 extern __imp___acrt_iob_func:proc
 
@@ -35,9 +46,24 @@ db "/defaultlib:legacy_stdio_definitions.lib"
 
 extern puts:proc
 extern fprintf:proc
+extern strerror:proc
+extern errno:proc ; ???linux???
+
+extern fopen:proc
+extern fclose:proc
+extern fread:proc
+extern fseek:proc
+extern ftell:proc
+
+extern malloc:proc
+extern free:proc
 
 section .rodata
 f1: dd 1.0
+
+SEEK_SET: equ 0
+SEEK_CUR: equ 1
+SEEK_END: equ 2
 
 section .bss align=4
 
