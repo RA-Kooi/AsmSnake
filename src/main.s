@@ -5,6 +5,7 @@
 %include "opengl.inc"
 %include "init_gl.inc"
 %include "debug_context.inc"
+%include "snake.inc"
 
 section .rodata
 init_error: db "Error initializing GLFW",0
@@ -83,6 +84,8 @@ main:
 
 	mov arg1, r12
 	call [glfwSwapBuffers]
+
+	call init_board
 
 	; while(!glfwShouldClose(window))
 .no_close_begin
