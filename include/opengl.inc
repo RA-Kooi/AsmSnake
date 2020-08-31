@@ -45,6 +45,22 @@ GL_DEBUG_SEVERITY_NOTIFICATION:    equ 0x0000826B
 section .bss
 struc gl_pointers_t
 .glDebugMessageCallbackARB: resq 1
+.glCreateShader:            resq 1
+.glDeleteShader:            resq 1
+.glShaderSource:            resq 1
+.glCompileShader:           resq 1
+.glAttachShader:            resq 1
+.glGetShaderiv:             resq 1
+.glGetShaderInfoLog:        resq 1
+.glCreateProgram:           resq 1
+.glDeleteProgram:           resq 1
+.glLinkProgram:             resq 1
+.glGetProgramiv:            resq 1
+.glGetProgramInfoLog:       resq 1
+.glUseProgram:              resq 1
+.glBindAttribLocation:      resq 1
+.glGenBuffers:              resq 1
+.glDeleteBuffers:           resq 1
 endstruc
 
 %ifndef INIT_GL_S
