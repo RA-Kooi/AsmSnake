@@ -4,7 +4,7 @@ global read_entire_file
 
 section .rodata
 file_mode: db "rb",0
-error_str: db "Failed to open file %s: %s",10,0
+error_str: db "Failed to open file (%s): %s",10,0
 
 stack_space: equ 0x28
 
@@ -20,7 +20,7 @@ section .text
 ; Padding      0x28
 ; Shadow space 0x20
 
-; char *read_entire_file(char *fileName)
+; char *read_entire_file(char *fileName, size_t &len)
 read_entire_file:
 	mov [rsp + 0x08], r12 ; Save R12 before we use it
 	mov [rsp + 0x10], r13 ; Save R13 before we use it
@@ -28,10 +28,11 @@ read_entire_file:
 
 	sub rsp, stack_space
 
-	; r12 = FILE*
+	; r12 = FILE*/file_name
 	; r13 = file_len
 	; r14 = data
 
+	mov r12, arg1
 	lea arg2, [file_mode]
 	call [fopen]
 
@@ -66,8 +67,8 @@ read_entire_file:
 	; Hope to GOD we can read this shit in a single fread call
 	; fread(data, file_len, 1, file)
 	mov arg1, r14
-	mov arg2, r13
-	mov arg3, 1
+	mov arg2, 1
+	mov arg3, r13
 	mov arg4, r12
 	call [fread]
 
@@ -80,6 +81,7 @@ read_entire_file:
 	call [fclose]
 
 	mov rax, r14
+	mov arg2, r13
 
 .end
 	add rsp, stack_space
@@ -99,7 +101,7 @@ read_entire_file:
 	mov arg4, rax
 
 	; Move filename to arg3 for fprintf
-	mov arg3, arg1
+	mov arg3, r12
 
 	; fprintf(stderr, error_str, fileName, strerror(errno))
 	mov arg1, 2
