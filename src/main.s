@@ -6,12 +6,14 @@
 %include "init_gl.inc"
 %include "debug_context.inc"
 %include "snake.inc"
+%include "renderer.inc"
 
 section .rodata
-init_error: db "Error initializing GLFW",0
+init_error:   db "Error initializing GLFW",0
 window_title: db "AsmSnake",0
 window_error: db "Error creating window",0
-fps: dd 0.1 ; 10 FPS ought to be enough I guess
+render_error: db "Error initializing renderer",0
+fps:          dd 0.1 ; 10 FPS ought to be enough I guess
 
 stack_space: equ 0x28 ; 32 byte shadow space + 8 bytes alignment
 
@@ -19,6 +21,7 @@ global main
 section .text code align=16
 
 ; r12 = glfw window
+; r13 = return code
 
 main:
 	sub rsp, stack_space
@@ -86,6 +89,9 @@ main:
 	call [glfwSwapBuffers]
 
 	call init_board
+	call init_renderer
+	test rax, rax
+	jz .init_fail
 
 	; while(!glfwShouldClose(window))
 .no_close_begin
@@ -106,17 +112,29 @@ main:
 
 	jmp .no_close_begin
 .no_close_end
+	mov r13, 0
+
+	jmp .end
+
+.init_fail
+	lea arg1, [render_error]
+	call [puts]
+
+	mov r13, 1
 	jmp .end
 
 .window_fail
 	lea arg1, [window_error]
 	call [puts]
+	mov r13, 1
 
 .end
+	call destroy_renderer
+
 	call [glfwTerminate]
 
 	; Return 0
-	xor rax, rax
+	mov rax, r13
 
 	add rsp, stack_space
 

@@ -63,7 +63,8 @@ def build(bld):
 			'src/init_gl.s',
 			'src/debug_context.s',
 			'src/file_utils.s',
-			'src/snake.s'
+			'src/snake.s',
+			'src/renderer.s'
 		])
 
 	bld.program(
