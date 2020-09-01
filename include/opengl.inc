@@ -22,6 +22,10 @@ GL_COLOR_BUFFER_BIT:               equ 0x00004000
 GL_FRAGMENT_SHADER                 equ 0x00008B30
 GL_VERTEX_SHADER                   equ 0x00008B31
 
+GL_COMPILE_STATUS:                 equ 0x00008B81
+GL_LINK_STATUS:                    equ 0x00008B82
+GL_INFO_LOG_LENGTH:                equ 0x00008B84
+
 GL_DEBUG_OUTPUT:                   equ 0x900002E0
 GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB:   equ 0x00008242
 
