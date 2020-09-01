@@ -115,11 +115,7 @@ debug_callback:
 	call get_severity
 
 	; fprintf(2, format string, msg, source str, type str, sev str, id)
-	mov arg1, 2
-%ifidn __OUTPUT_FORMAT__,win64
-	call [__imp___acrt_iob_func]
-	mov arg1, rax
-%endif
+	get_stderr arg1
 	lea arg2,          [format_str]
 	mov [arg5 + 0x10], arg3 ; ID
 	mov arg3,          [arg5 + 0x10 + debug_stack] ; msg

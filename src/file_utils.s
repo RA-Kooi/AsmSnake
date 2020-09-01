@@ -1,4 +1,5 @@
 %include "defs.inc"
+%include "helpers.inc"
 
 global read_entire_file
 
@@ -104,11 +105,7 @@ read_entire_file:
 	mov arg3, r12
 
 	; fprintf(stderr, error_str, fileName, strerror(errno))
-	mov arg1, 2
-%ifidn __OUTPUT_FORMAT__, win64
-	call [__imp___acrt_iob_func]
-	mov arg1, rax
-%endif
+	get_stderr arg1
 
 	lea arg2, [error_str]
 	call [fprintf]
