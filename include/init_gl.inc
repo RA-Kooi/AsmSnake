@@ -1,4 +1,4 @@
-; vim: ft=asm
+; vim: ft=nasm
 
 %ifndef INIT_GL_INC
 %define INIT_GL_INC

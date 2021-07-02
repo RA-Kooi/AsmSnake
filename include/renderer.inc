@@ -1,4 +1,4 @@
-; vim: ft=asm
+; vim: ft=nasm
 
 %ifndef RENDERER_INC
 %define RENDERER_INC

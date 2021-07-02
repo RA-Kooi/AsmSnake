@@ -1,4 +1,4 @@
-; vim: ft=asm
+; vim: ft=nasm
 
 %ifndef SNAKE_INC
 %define SNAKE_INC

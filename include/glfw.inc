@@ -1,4 +1,4 @@
-; vim: ft=asm
+; vim: ft=nasm
 
 %ifndef GLFW_INC
 %define GLFW_INC

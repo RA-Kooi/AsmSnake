@@ -1,3 +1,5 @@
+; vim: ft=nasm
+
 %include "defs.inc"
 %define RENDERER_S
 %include "renderer.inc"

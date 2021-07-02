@@ -1,3 +1,5 @@
+; vim: ft=nasm
+
 %include "defs.inc"
 %define INIT_GL_S
 %include "opengl.inc"

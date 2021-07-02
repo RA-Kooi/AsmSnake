@@ -1,4 +1,4 @@
-; vim: ft=asm
+; vim: ft=nasm
 
 %ifndef OPENGL_S
 %define OPENGL_S

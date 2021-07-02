@@ -1,4 +1,4 @@
-; vim: ft=asm
+; vim: ft=nasm
 
 %ifndef DEBUG_CONTEXT_INC
 %define DEBUG_CONTEXT_INC

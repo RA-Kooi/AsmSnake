@@ -1,3 +1,5 @@
+; vim: ft=nasm
+
 %include "defs.inc"
 %define SNAKE_S
 %include "snake.inc"

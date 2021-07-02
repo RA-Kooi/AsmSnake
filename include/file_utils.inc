@@ -1,4 +1,4 @@
-; vim: ft=asm
+; vim: ft=nasm
 
 %ifndef FILE_UTILS_INC
 %define FILE_UTILS_INC

@@ -1,3 +1,5 @@
+; vim: ft=nasm
+
 %include "defs.inc"
 %include "opengl.inc"
 %include "helpers.inc"

@@ -1,3 +1,5 @@
+; vim: ft=nasm
+
 [BITS 64]
 
 %include "defs.inc"
