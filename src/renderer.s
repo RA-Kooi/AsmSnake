@@ -61,11 +61,11 @@ load_shaders:
 	mov [render_state + render_state_t.program], rax
 
 	mov arg1, rax
-	mov arg2, [render_state + render_state_t.vertex_shader]
+	mov edx, [render_state + render_state_t.vertex_shader]
 	call [gl_pointers + gl_pointers_t.glAttachShader]
 
-	mov arg1, [render_state + render_state_t.program]
-	mov arg2, [render_state + render_state_t.fragment_shader]
+	mov ecx, [render_state + render_state_t.program]
+	mov edx, [render_state + render_state_t.fragment_shader]
 	call [gl_pointers + gl_pointers_t.glAttachShader]
 
 	call compile_shaders
@@ -155,12 +155,12 @@ create_shader:
 compile_shaders:
 	sub rsp, compile_stack_size
 
-	mov arg1, [render_state + render_state_t.vertex_shader]
+	mov ecx, [render_state + render_state_t.vertex_shader]
 	call compile_shader
 	test rax, rax
 	jz .end
 
-	mov arg1, [render_state + render_state_t.fragment_shader]
+	mov ecx, [render_state + render_state_t.fragment_shader]
 	call compile_shader
 
 .end
@@ -181,7 +181,7 @@ compile_shader:
 	call [gl_pointers + gl_pointers_t.glGetShaderiv]
 
 	mov rax, 1
-	mov rcx, [arg5]
+	mov ecx, [arg5]
 	cmp rcx, 1
 	jz .end
 
