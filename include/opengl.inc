@@ -26,7 +26,7 @@ GL_COMPILE_STATUS:                 equ 0x00008B81
 GL_LINK_STATUS:                    equ 0x00008B82
 GL_INFO_LOG_LENGTH:                equ 0x00008B84
 
-GL_DEBUG_OUTPUT:                   equ 0x900002E0
+GL_DEBUG_OUTPUT:                   equ 0x000092E0
 GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB:   equ 0x00008242
 
 GL_DEBUG_SOURCE_API:               equ 0x00008246
