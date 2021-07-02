@@ -97,6 +97,6 @@ init_board:
 	mov byte[rdx + rax], 2
 
 	; Set player block
-	mov byte[rdx + board_mid], 1
+	mov byte[board + board_mid], 1
 
 	ret
